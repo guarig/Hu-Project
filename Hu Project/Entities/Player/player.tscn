@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://jjby66bk3ohk"]
+
+[ext_resource type="Script" path="res://Entities/Player/player.gd" id="1_6y2r5"]
+[ext_resource type="Texture2D" uid="uid://cq831yq1524dm" path="res://player-block.png" id="2_vtogs"]
+
+[sub_resource type="Curve" id="Curve_in3hl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(2e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.403294), -1.7315, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgkw"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(640, 640)
+script = ExtResource("1_6y2r5")
+dash_curve = SubResource("Curve_in3hl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vtogs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iwgkw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
