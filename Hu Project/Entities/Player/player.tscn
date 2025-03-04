@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://jjby66bk3ohk"]
 
 [ext_resource type="Script" uid="uid://dxrhirhwlbu30" path="res://Entities/Player/player.gd" id="1_6y2r5"]
-[ext_resource type="Texture2D" uid="uid://cq831yq1524dm" path="res://player-block.png" id="2_vtogs"]
+[ext_resource type="Texture2D" uid="uid://ctgaee4ctk62n" path="res://Assets/Protosprites/player-block.png" id="2_3uyv8"]
 
 [sub_resource type="Curve" id="Curve_in3hl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(2e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.403294), -1.7315, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgkw"]
-size = Vector2(128, 128)
+size = Vector2(32, 32)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_6y2r5")
 dash_curve = SubResource("Curve_in3hl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vtogs")
+texture = ExtResource("2_3uyv8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iwgkw")
