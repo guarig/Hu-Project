@@ -50,7 +50,7 @@ func get_input(delta : float) -> void:
 	
 	# Aplica a aceleração ou desaceleração à velocidade horizontal
 	if dir: # Se há entrada de direção
-		velocity.x = move_toward(velocity.x, dir * speed, walk_speed * acceleration)
+		velocity.x = move_toward(velocity.x, dir * speed, speed * acceleration)
 	else: # Caso contrário, desacelera gradualmente
 		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
 	
