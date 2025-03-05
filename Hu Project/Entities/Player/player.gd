@@ -56,7 +56,7 @@ func get_input(delta : float) -> void:
 	
 	# Verifica se a tecla "dash" está pressionada, se há direção (dir != 0),
 	# se o jogador não está atualmente dendo um dash e se o cooldown terminou
-	if Input.is_action_just_pressed("dash") and dir and not is_dashing and dash_timer <=0:
+	if Input.is_action_just_pressed("dash") and dir and !is_dashing and dash_timer <=0:
 		is_dashing = true # Inicia o dash
 		dash_start_position = position.x # Armazena a posição horizontal inicial do dash
 		dash_dir = dir # Define a direção do dash com base na entrada do jogador (-1 ou 1)
