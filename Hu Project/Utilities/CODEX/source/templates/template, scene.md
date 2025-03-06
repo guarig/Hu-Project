@@ -1,1 +1,1 @@
-[template, dialogue.docx](file:///C:%5CUsers%5CRhuvi%5CDocuments%5CMapinguari%5CHu%20Project%5Cutilities%5CCODEX%5Csource%5Ctemplates%5Ctemplate,%20dialogue.docx)
+![[template, dialogue.docx]]
