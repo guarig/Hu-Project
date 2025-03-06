@@ -27,8 +27,6 @@ extends CharacterBody2D
 var is_dashing : bool = false
 # Posição inicial do jogador no início do dash
 var dash_start_position : float = 0
-# Direção do dash; -1 para esquerda, 1 para direita
-var dash_dir : float = 0
 # Temporizador usado para controlar a duração do dash e a recarga
 var dash_timer : float = 0
 
@@ -50,16 +48,15 @@ func get_input(delta : float) -> void:
 	
 	# Aplica a aceleração ou desaceleração à velocidade horizontal
 	if dir: # Se há entrada de direção
-		velocity.x = move_toward(velocity.x, dir * speed, walk_speed * acceleration)
+		velocity.x = move_toward(velocity.x, dir * speed, speed * acceleration)
 	else: # Caso contrário, desacelera gradualmente
 		velocity.x = move_toward(velocity.x, 0, speed * deceleration)
 	
 	# Verifica se a tecla "dash" está pressionada, se há direção (dir != 0),
 	# se o jogador não está atualmente dendo um dash e se o cooldown terminou
-	if Input.is_action_just_pressed("dash") and dir and not is_dashing and dash_timer <=0:
+	if Input.is_action_just_pressed("dash") and dir and !is_dashing and dash_timer <=0:
 		is_dashing = true # Inicia o dash
 		dash_start_position = position.x # Armazena a posição horizontal inicial do dash
-		dash_dir = dir # Define a direção do dash com base na entrada do jogador (-1 ou 1)
 		dash_timer = dash_cooldown # Inicia o cooldown do dash
 	
 	# Verifica se o jogador está atualmente dando um dash
@@ -73,7 +70,7 @@ func get_input(delta : float) -> void:
 		else:
 			# Continua o dash, ajustando a velocidade horizontal com base na curva do dash
 			# 'dash_curve.sample()' retorna um valor entre 0 e 1, ajustando a aceleração/desaceleração
-			velocity.x = dash_dir * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
+			velocity.x = dir * dash_speed * dash_curve.sample(current_distance / dash_max_distance)
 			velocity.y = 0 # Zera a velocidade vertical para evitar que o jogador caia durante o dash
 	
 	# Reduz o temporizador de cooldown do dash, se ele ainda estiver acima de 0
